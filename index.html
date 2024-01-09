@@ -4,6 +4,9 @@
 <head>
     <title>google reviews</title>
     <script>
+
+    
+
         let url = window.location.href;
         if (url && url.includes('?')) {
 
@@ -13,28 +16,12 @@
             console.log('dd ', query)
             query = encodeURIComponent(query);
             console.log('query ', query);
-
-            let apiUrl = 'https://spreadsheets.google.com/tq?key=1gsv48ca2LQLHMq2Tfg2DU0VZmf-u_QbqsuW-yeyOy8M&sheet=Data&tq=' + query;
-
-            console.log('apiUrl ' + apiUrl);
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Accept', 'application/json');
-            headers.append('Authorization', 'Basic ');
-            headers.append('Origin', 'http://localhost:3000');
-            
-            var requestOptions = {
-                mode:'cors',
-                method: 'GET',
-                headers: headers,
-                redirect: 'follow'
-            };
-
-            fetch(apiUrl, requestOptions)
+              
+              fetch("https://docs.google.com/spreadsheets/d/1gsv48ca2LQLHMq2Tfg2DU0VZmf-u_QbqsuW-yeyOy8M/gviz/tq?=SELECT%20A%2CB%2CC%2CD%20WHERE%20A%20%3D%201", requestOptions)
                 .then(response => response.text())
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
-        }
+            }
     </script>
 
 </head>
