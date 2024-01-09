@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>google reviews</title>
+    <script>
+        let url = window.location.href;
+        if (url && url.includes('?')) {
+            
+            let param = url.split('?')[1];
+            console.log('param ', param);
+            let query = 'SELECT A,B,C,D WHERE A = ' + param;
+            console.log('dd ', query)
+            query = encodeURIComponent(query);
+            console.log('query ', query);
+
+            let apiUrl = 'https://spreadsheets.google.com/tq?key=1gsv48ca2LQLHMq2Tfg2DU0VZmf-u_QbqsuW-yeyOy8M&sheet=Data&tq=' + query;
+
+            console.log('apiUrl ' + apiUrl);
+
+            var myHeaders = new Headers();
+            myHeaders.append("Cookie", "NID=511=I6zuNy3Vv_R1_K7Mz-0UTS36sPdMOiC6gAnZiq6OHZ6wv9hqyFK-DBzsJpaymR6r-zZkSJKH5XfZ7QLvv2yaomeA2cqVv4kCmLFwya2usOYROytdo1qLmdS5w9x5YlZ1j4XgZtMoDSpiIU6_4qs1z0un8yt-kxZeZMyA890BBz0");
+
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch(apiUrl, requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+    </script>
+
+</head>
+
+<body>
+
+
+    <h1>My First Headingd</h1>
+    <p>My first paragraph.</p>
+
+</body>
+
+</html>
